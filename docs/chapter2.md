@@ -1,20 +1,10 @@
-# pi-pve-dashboard
-
-树莓派作为 Home Server 的运维工具。
-
-## 目录
-
-[第一章 - 树莓派环境搭建](docs/chapter1.md)
-（当前）[第二章 - 搭建运维面板](docs/chapter2.md)
-[第三章 - 配置告警](docs/chapter3.md)
+# 二 搭建运维面板
 
 ## 前言
 
 本篇将会实现使用树莓派作为家庭服务器的运维工具，主要是在树莓派上搭建 influxDB 和 Grafana，对 Proxmox VE 的统计数据进行收集和可视化。本篇的第一章将会介绍树莓派环境的搭建，包括树莓派系统的安装以及 Docker 的安装；第二章将会介绍如何使用 Docker 运行 influxDB 和 Grafana，配置 PVE 将数据上报到 influxDB，以及在 Grafana 中建立一个面板来监控 PVE 的运行状态。本章为系列的第二章。
 
-如果你对树莓派不熟悉，可以参考本系列第一章 [树莓派作为 Home Server 运维工具 （一） 树莓派环境搭建](docs/chapter1.md)。
-
-第一章实际上是针对树莓派的配置过程，第二章不针对树莓派，任意可以运行 Docker 的设备均适用。因此，你也可以使用其他设备（甚至就在 Home Server 本身）进行。
+第一章实际上是针对树莓派的配置过程，第二章不针对树莓派，任意可以运行 Docker 的设备均适用。因此，你也可以使用其他设备（甚至就在 Home Server本身）进行。
 
 ## 前期准备
 
@@ -37,11 +27,11 @@ sudo docker compose up -d
 
 ![](http://img.ameow.xyz/202210231835152.png)
 
-然后选择 configure later 即可。进入面板后，点击 Load Data，选择 API Tokens，添加一个 token。
+然后选择 configure later即可。进入面板后，点击 Load Data，选择 API Tokens，添加一个token。
 
 ![](http://img.ameow.xyz/202210231837703.png)
 
-填入说明，确保 RW 权限选中刚才新建的 database `proxmox` 。点击 Save。
+填入说明，确保RW权限选中刚才新建的 database `proxmox` 。点击 Save。
 
 ![](http://img.ameow.xyz/202210231838038.png)
 
@@ -65,7 +55,7 @@ sudo docker compose up -d
 
 ## 配置 Grafana
 
-浏览器输入 `ip:3000` （ `ip` 为树莓派的 IP ）访问 Grafana，首次登录默认账号密码为 admin, admin，会提示修改密码，修改后进入 Grafana。
+浏览器输入 `ip:3000` （ `ip` 为树莓派的 IP ）访问 Grafana，首次登录默认账号密码为admin, admin，会提示修改密码，修改后进入 Grafana。
 
 点击左下角设置，Data sources。点击 Add data source，选择 InfluxDB。
 
@@ -94,7 +84,3 @@ sudo docker compose up -d
 ## 大功告成
 
 ![](http://img.ameow.xyz/202210231857879.png)
-
-## Reference
-
-[Monitoring Proxmox with InfluxDB and Grafana in 4 Easy steps](https://www.linuxsysadmins.com/monitoring-proxmox-with-grafana/)
